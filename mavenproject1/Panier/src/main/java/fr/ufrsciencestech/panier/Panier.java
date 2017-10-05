@@ -14,35 +14,47 @@ import java.util.ArrayList;
 public class Panier 
 {
     
-    private ArrayList<Orange> panier ;
+    public ArrayList<Orange> lePanier ;
     private int max;
     
     
     public Panier(int taille)
     {
-        this.max=taille;
+        max=taille;
+        lePanier=new  ArrayList<Orange>();
         
     }
  public void ajoute(Orange uneOrange)
  {
-     if(!this.estPlein())
+     if(this.estPlein())
      {
-         this.panier.add(uneOrange);
+         System.out.println("le panier est plein"); 
      }else{
-           System.out.println("le panier est plein"); 
+           this.lePanier.add(uneOrange);
              }    
  }
- public void ajoute()
+ public void retire()
  {
-     if(!this.estVide())
+     if(this.estVide())
      {
-         this.panier.remove(this.panier.size()-1);
+         System.out.println("le panier est vide");
      }else{
-           System.out.println("le panier est plein"); 
+            this.lePanier.remove(this.lePanier.size());
              }    
  }
+ public double getPrix()
+{
+    double prix=0;
+       
+     for(int i=0;i<this.lePanier.size();i++)
+     {
+         prix+=this.lePanier.get(i).getPrix();
+     }
  
+     return prix;
+ }
  
+    @Override
  public String toString()
  { String s ="";
      if(this.estPlein())
@@ -54,14 +66,28 @@ public class Panier
                 return s;
             }
      
-     s+=" le panier contient "+this.panier.size()+" oranges :\n";
+     s+=" le panier contient "+this.lePanier.size()+" oranges :\n";
      
-     for(int i=0;i<this.panier.size();i++)
+     for(int i=0;i<this.lePanier.size();i++)
      {
-         s+=""+"Orange N°"+i+" origine "+this.panier.get(i).getOrigine()+" à "+this.panier.get(i).getPrix()+"€\n";
+         s+=""+"Orange N°"+i+" origine "+this.lePanier.get(i).getOrigine()+" à "+this.lePanier.get(i).getPrix()+"€\n";
      }
+     
+     s+="le prix total du panier est "+this.getPrix()+"€\n";
      return s;
            
+ }
+ 
+ public void boycotteOrigine(String origine)
+ {
+      for(int i=0;i<this.lePanier.size();i++)
+     {
+         if(this.lePanier.get(i).getOrigine()==origine)
+         {
+                 this.lePanier.remove(i);
+         }
+     }
+      
  }
  
  
@@ -81,12 +107,14 @@ public class Panier
      * @return the panier
      */
     public ArrayList<Orange> getPanier() {
-        return panier;
+        return lePanier;
     }
     
     public boolean estPlein()
     {
-        if(this.panier.size()==this.max)
+        int taille= this.lePanier.size();
+        
+        if(taille==this.max)
         {
             return true;
         }else
@@ -97,7 +125,7 @@ public class Panier
     
     public boolean estVide()
     {
-         if(this.panier.size()==0)
+         if(this.lePanier.isEmpty())
         {
             return true;
         }else
@@ -109,8 +137,8 @@ public class Panier
     /**
      * @param panier the panier to set
      */
-    public void setPanier(ArrayList<Orange> panier) {
-        this.panier = panier;
+    public void setPanier(ArrayList<Orange> Ppanier) {
+        this.lePanier = Ppanier;
     }
 
     /**
