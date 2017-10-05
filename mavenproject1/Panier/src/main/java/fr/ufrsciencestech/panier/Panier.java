@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Panier 
 {
     
-    public ArrayList<Orange> lePanier ;
+    private ArrayList<Orange> lePanier ;
     private int max;
     
     
@@ -148,12 +148,26 @@ public class Panier
         return max;
     }
 
+     /**
+     * @return the max
+     */
+    public int getSize() {
+        return this.lePanier.size();
+    }
+  /**
+     * @return the max
+     */
+    public Orange getOrange(int i) {
+        return this.lePanier.get(i);
+    }
+
     /**
      * @param max the max to set
      */
     public void setMax(int max) {
         this.max = max;
     }
+    
     
     
 }

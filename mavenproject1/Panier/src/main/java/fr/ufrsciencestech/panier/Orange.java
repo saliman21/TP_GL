@@ -1,3 +1,5 @@
+package fr.ufrsciencestech.panier;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -29,36 +31,25 @@ public class Orange
         return origine;
     }
     
-    private Orange(double Pprix,String Porigine)
+    public Orange(double Pprix,String Porigine)
     {
-        this.prix =Pprix;
-        this.origine= Porigine;
+        prix =Pprix;
+        origine= Porigine;
     }
 
-    /**
-     * @param prix the prix to set
-     */
-    public void setPrix(double prix)
-    throws prixnegatifExeception
-        {
+    public void setPrix(double prix) throws PrixNegatifException
+    {
                     
                
             if(prix<0)
             {
-                throw new prixnegatifExeception();
+                throw new PrixNegatifException();
             }else{
                     this.prix = prix;
                   }
-        }
+    }
     }
   
 
 
-class prixnegatifExeception extends Exception
-{
-    public prixnegatifExeception()
-    {
-      System.out.println("Vous essayez d'instancier la classe orange avec un prix est négatifs");
-    }
-    
-}
+
