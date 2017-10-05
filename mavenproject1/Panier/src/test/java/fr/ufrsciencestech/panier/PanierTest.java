@@ -58,37 +58,41 @@ public class PanierTest extends TestCase {
     /**
      * Test of ajoute method, of class Panier.
      */
-    public void testAjoute() {
-        System.out.println("ajoute");
-        Orange uneOrange = null;
-        Panier instance = null;
-        instance.ajoute(uneOrange);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testAjoute()
+    {
+       monPanier.ajoute(o1);
+        //L'oracle
+        assertFalse(monPanier.estVide());
+        assertEquals(monPanier.getOrange(0),01);
+        
     }
 
+    
     /**
      * Test of retire method, of class Panier.
      */
     public void testRetire() {
-        System.out.println("retire");
-        Panier instance = null;
-        instance.retire();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+          monPanier.ajoute(o1);
+          int taille= monPanier.getSize();
+          
+              int  tailleN=taille-1;
+           //L'oracle
+    
+        assertEquals(tailleN,monPanier.getSize());
     }
 
     /**
      * Test of getPrix method, of class Panier.
      */
-    public void testGetPrix() {
+    public void testGetPrix()
+    {
         System.out.println("getPrix");
         Panier instance = null;
         double expResult = 0.0;
         double result = instance.getPrix();
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    
     }
 
     /**
@@ -101,9 +105,10 @@ public class PanierTest extends TestCase {
         String result = instance.toString();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+      
     }
 
+    
     /**
      * Test of boycotteOrigine method, of class Panier.
      */
@@ -112,11 +117,14 @@ public class PanierTest extends TestCase {
         monPanier.boycotteOrigine("France");
         assertTrue(monPanier.estVide());
     }
+    
+    
 
     /**
      * Test of equals method, of class Panier.
      */
-    public void testEquals() {
+    public void testEquals() 
+    {
         System.out.println("equals");
         Object obj = null;
         Panier instance = null;
